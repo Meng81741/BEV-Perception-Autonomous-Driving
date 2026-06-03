@@ -183,19 +183,6 @@ python train_nuscenes.py --data_root /path/to/nuscenes --no_map
 python train_nuscenes.py --data_root /path/to/nuscenes --backbone resnet101
 ```
 
-### 方式三：使用其他公开数据集
-
-| 数据集 | 相机数 | 3D框 | 可行驶区域 | 车道线 | 接入方式 |
-|--------|--------|------|-----------|--------|---------|
-| **Waymo Open** | 5 | ✅ | ❌ | ❌ | 参考 `nuscenes_dataset.py` 模式编写 `waymo_dataset.py`，需安装 `waymo-open-dataset-tf` |
-| **Argoverse 2** | 7 | ✅ | ✅ | ✅ | 参考 `nuscenes_dataset.py`，需安装 `av2` 包 |
-| **KITTI-360** | 4 | ✅ | ❌ | ❌ | 数据量小，适合调试；自定义 JSON 标注接入即可 |
-
-接入新数据集的步骤：
-1. 在 `data/` 下新建 `xxx_dataset.py`
-2. 实现 `__len__` 和 `__getitem__`，返回与 `collate_fn` 兼容的字典
-3. 在 `data/__init__.py` 中导出
-
 ### 推理
 
 ```bash
